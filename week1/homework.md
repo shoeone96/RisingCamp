@@ -1,0 +1,24 @@
+- 최상위 고객 객체를 추상클래스로 만들고, 공통 멤버변수(이름, 등급, 할인방식)와 가격을 계산하는 계산 메서드, 유저 정보를
+  출력하는 메서드 2가지를 만든다.
+  - abstract class customer.Customer
+  - name, customer.Grade, benefitMethod
+  - calculatePrice(), showUserInfo();
+- 유저 정보를 출력하는 메서드를 추상메서드로 선언한다.
+  - showUserInfo() -> 추상메서드로 선언
+- 웹에서 접속하는 유저와 모바일에서 접속하는 유저를 구분하여 정보가 출력되는 상단에 접속 경로를 출력해야 한다.  
+  - 웹 접속 유저, 모바일 접속 유저로 customer.Customer class를 상속받는 클래스 생성
+- 등급은 enum을 활용해서 BRONZE, SILVER, GOLD 등급으로 관리하고, 각 등급마다 할인 비율인 0.1, 0.2, 0.3을 적용하도록 한다.
+  - customer.Grade 라는 enum을 생성, enum에 각각 할인 비율 정보도 함께 저장
+- 할인 방식은 금액을 받으면 계산 결과를 반환하는 메서드를 가진 인터페이스로 설계하고 보너스 방식과, 할인 방식이 있다.
+  - 각각 할인 방식을 구현한 인터페이스 구현체를 만든다.
+  - 전달받은 할인 방식에 따라 어떤 구현체를 이용할 것인지 작성
+  - benefitMethod 는 인터페이스를 받는 것으로 작성
+  - class benefit.BonusMethod implements discountMethod
+  - class benefit.DiscountMethod implements discountMethod
+- 보너스 방식은 할인 비율만큼 보너스 포인트에 더하고, 할인 방식은 지불 금액에서 곧바로 할인 비율만큼 금액을 차감해주는 방식이다.
+  - 고객에 보너스 포인트 추가
+  - 각 benefit.BonusMethod, benefit.DiscountMethod 구현
+  - benefitMethod 를 구현
+- 계산 메서드는 고객 객체에 있는 할인방식을 활용하여 계산되도록 한다.
+- 고객의 속성은 Getter, Setter로만 접근 가능하게 해야 한다.
+- 고객은 이름 속성으로 동일한지 비교가 가능하다. (equals, hashcode 활용)
