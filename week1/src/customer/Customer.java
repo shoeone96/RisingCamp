@@ -25,6 +25,11 @@ public abstract class Customer {
         return name;
     }
 
+
+    public boolean equals(Customer customer){
+        return this.name.equals(customer.name);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
